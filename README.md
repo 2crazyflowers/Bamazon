@@ -34,7 +34,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* department_name
 	* price (cost to customer)
 	* stock_quantity (how much of the product is available in stores)
-	![Product Table](images/displayproducts.png)
+	![ProductTable](images/displayproducts.png)
 
 1. The app prompts the user the ID of the product they would like to buy.
 1. The second prompt asks how many of selected product they would like to buy.
@@ -42,7 +42,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* if the store has enough of the product to meet the user's request.
 	* if not, the app log the phrase "Insufficient quantity!", and prevents the order from going through.
 	* if the store does have enough of the product, the order is filled and the total price, the item and quantity is logged.
-	![Creating An Order](images/order.png)
+	![CreatingAnOrder](images/order.png)
 	* The app then updates the SQL database to reflect the remaining quantity.
 	
 
