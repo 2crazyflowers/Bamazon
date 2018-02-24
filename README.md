@@ -53,9 +53,9 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* Add to Inventory
 	* Add New Product
 	* End Program
-	![Manager Menu](./images/managermenu.png)
+	![Manager Menu](./images/managermenu.PNG)
 1. If a manager selects View Products for Sale, the app list every available item: the item IDs, names, prices, and quantities.
-![Display Order](/images/displayproductsmanager.png)
+![Display Order](./images/displayproductsmanager.PNG)
 1. If a manager selects View Low Inventory, then it lists all items with an inventory count lower than five.
 ![View Low Inventory](images/viewlowinventory.png)
 1. If a manager selects Add to Inventory, the app displays a prompt that will let the manager "add more" of any item currently in the store.
