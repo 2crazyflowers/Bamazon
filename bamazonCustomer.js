@@ -1,5 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+const {table} = require('table');
 //var keys = require("./keys.js");
 require("dotenv").config();
 //twitter npm specific call to get keys to twitter account
@@ -21,23 +22,60 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
 	if (err) throw err;
-	console.log("connected as id " + connection.threadId);
-
+	//console.log("connected as id " + connection.threadId);
 	displayItems();
 });
+
 //need to display products for sale
 function displayItems() {
 //query the database for all the items being auctioned
-	console.log("Selecting all products...\n");
+	console.log("Selecting all Bamazon Products\n");
 	connection.query("SELECT * FROM products", function(err, results) {
 		if (err) throw err;
+		//commands from npm table
+		let data, output, config;
+		data = [
+			["item id", "product name", "price", "department name", "stock quantity"]
+			];
+		config = {
+			    columns: {
+			        0: {
+			            alignment: 'left',
+			            width: 7
+			        },
+			        1: {
+			            alignment: 'left',
+			            width: 15
+			        },
+			        2: {
+			            alignment: 'left',
+			            width: 5
+			        },
+			        3: {
+			        	alignment: 'left',
+			        	width: 15
+			        },
+			        4: {
+			        	alignment: 'left',
+			        	width: 15
+			        }
+			    }
+			};
+		output = table(data, config);
+		console.log(output);
+ 		for (var i = 0; i < results.length; i++) {
+ 			//not quite working the way I want, but moving on with this display for now
+			data2 = [
+				[results[i].item_id, results[i].product_name, results[i].price, results[i].department_name, results[i].stock_quantity]
+			];
 
-		console.log(results);
+			output2 = table(data2, config);
+			console.log(output2);
+ 		}
+		// console.log(results);
 		// connection.end();
 		chooseItem();
-
 	});
-
 }
 
 function chooseItem() {
@@ -73,29 +111,16 @@ function chooseItem() {
 
 			connection.query("SELECT * FROM products WHERE ?", {item_id: answer.item}, function(err, result) {
     			if (err) throw err;
-   				//Log the quanity of item requested
-   				//gives me result of item chosen
-				console.log(result);
-				//gives me item number of chosen
-				console.log(answer.item);
-				//gives me quantity of item chosen
-				console.log(result[0].stock_quantity);
-
-				//this gives me the price of each item
-				console.log(result[0].price);
-
-				//this shows the department name of each item
-				console.log(result[0].department_name);
-
+   				
 				if (result[0].stock_quantity > answer.quantity) {
-					console.log("Item and quantity are available for purchase");
+					console.log("==========================\nThe item and quantity you are requesting are available for purchase.\n==========================\n");
 					var cost = result[0].price * answer.quantity
-					var updateQuantity = result[0].stock_quantity - answer.quantity
-                    console.log("You owe: $" + cost + " for " + answer.quantity + "\nYour order has been placed, thank you, shop with us again!");
+					var updateQuantity = result[0].stock_quantity - parseInt(answer.quantity);
+                    console.log("==========================\nYou have orderd " + answer.quantity + " " + result[0].product_name + "(s).\nYour total cost is: $" + cost + ".\nYour order has been placed and will shipped to you in 5 days.\nThank you for shopping with Bamazon and have a great day!\n==========================");
 					
 					connection.query("UPDATE products SET ? WHERE ?",
 					[{
-						stock_quantity: updateQuantity,
+						stock_quantity: updateQuantity
 					},
 					{	
 						item_id: answer.item
@@ -105,8 +130,27 @@ function chooseItem() {
 					console.log("Item unavailable");
 				}
 				// console.log(result[0].stock_quantity);
-				connection.end();
+				startOver();
 			});
+		});
+}
+function startOver() {
+	inquirer
+		.prompt(
+		{
+			name: "endOrBuy",
+			type: "rawlist",
+			message: "Would you like to [BUY] another product or [END] the program?",
+			choices: ["BUY", "END"]
+		})
+		.then(function(answer) {
+			// based on their answer, either call the bid or the post functions
+			if (answer.endOrBuy.toUpperCase() === "BUY") {
+				displayItems();
+			}
+			else {
+				connection.end();
+			}
 		});
 }
 
