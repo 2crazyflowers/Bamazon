@@ -34,7 +34,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* department_name
 	* price (cost to customer)
 	* stock_quantity (how much of the product is available in stores)
-	![ProductTable](./images/displayproducts.PNG)
+	<img src="/images/displayproducts.PNG">
 
 1. The app prompts the user the ID of the product they would like to buy.
 1. The second prompt asks how many of selected product they would like to buy.
@@ -42,7 +42,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* if the store has enough of the product to meet the user's request.
 	* if not, the app log the phrase "Insufficient quantity!", and prevents the order from going through.
 	* if the store does have enough of the product, the order is filled and the total price, the item and quantity is logged.
-	![CreatingAnOrder](/images/order.PNG)
+	<img src="/images/order.PNG">
 	* The app then updates the SQL database to reflect the remaining quantity.
 	
 
@@ -53,9 +53,9 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* Add to Inventory
 	* Add New Product
 	* End Program
-	![Manager Menu](images/managermenu.png)
+	![Manager Menu](./images/managermenu.png)
 1. If a manager selects View Products for Sale, the app list every available item: the item IDs, names, prices, and quantities.
-![Display Order](images/displayproductsmanager.png)
+![Display Order](/images/displayproductsmanager.png)
 1. If a manager selects View Low Inventory, then it lists all items with an inventory count lower than five.
 ![View Low Inventory](images/viewlowinventory.png)
 1. If a manager selects Add to Inventory, the app displays a prompt that will let the manager "add more" of any item currently in the store.
