@@ -34,7 +34,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* department_name
 	* price (cost to customer)
 	* stock_quantity (how much of the product is available in stores)
-	![Product Table](/images/displayproducts.png)
+	![Product Table](images/displayproducts.png)
 
 1. The app prompts the user the ID of the product they would like to buy.
 1. The second prompt asks how many of selected product they would like to buy.
@@ -42,7 +42,7 @@ __Please note: if there is an error or issue with node not ending the program - 
 	* if the store has enough of the product to meet the user's request.
 	* if not, the app log the phrase "Insufficient quantity!", and prevents the order from going through.
 	* if the store does have enough of the product, the order is filled and the total price, the item and quantity is logged.
-	![Creating An Order](/images/order.png)
+	![Creating An Order](images/order.png)
 	* The app then updates the SQL database to reflect the remaining quantity.
 	
 
@@ -63,11 +63,5 @@ __Please note: if there is an error or issue with node not ending the program - 
 1. If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
 ![Add New Product](./images/addnewproduct.png)
 
-
-### Add To Your Portfolio
-After completing the homework please add the piece to your portfolio. Make sure to add a link to your updated portfolio in the comments section of your homework so the TAs can easily ensure you completed this step when they are grading the assignment. To receive an 'A' on any assignment, you must link to it from your portfolio.
-
-### One More Thing
-If you have any questions about this project or the material we have covered, please post them in the community channels in slack so that your fellow developers can help you! If you're still having trouble, you can come to office hours for assistance from your instructor and TAs.
-
-Good Luck!
+### Issues
+I was not able to get the table view to work properly or stacked. If you find any other issues while using the app or have a request or solution, please email me at bracewell.sara@gmail.com. Thank you for your time and suggestions!
